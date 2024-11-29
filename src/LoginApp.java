@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-//code
+//code testing
 
 public class LoginApp extends JFrame {
     private JTextField emailField;
