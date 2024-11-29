@@ -14,7 +14,6 @@ public class LoginApp extends JFrame {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "bassiiroti";
     print("added print statement")
-    print("add another print statement")
 
     public LoginApp() {
         setTitle("Login Screen");
