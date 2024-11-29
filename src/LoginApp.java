@@ -27,6 +27,7 @@ public class LoginApp extends JFrame {
         panel.add(new JLabel("Email:"));
         emailField = new JTextField();
         panel.add(emailField);
+        garbage=5;
 
         // Password Label and Password Field
         panel.add(new JLabel("Password:"));
