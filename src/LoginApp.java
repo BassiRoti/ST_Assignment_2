@@ -13,6 +13,7 @@ public class LoginApp extends JFrame {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/db_1";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "bassiiroti";
+    print("hello")
 
     public LoginApp() {
         setTitle("Login Screen");
