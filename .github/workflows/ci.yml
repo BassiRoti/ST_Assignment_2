@@ -27,13 +27,14 @@ jobs:
           sudo apt-get update  # Update package list
           sudo apt-get install -y maven  # Install Maven package
 
-      # Step 4: Install Xvfb (Virtual Display server for headless environments)
-      - name: Install Xvfb for virtual display
+      # Step 4: Install Xvfb for virtual display and set the DISPLAY environment variable
+      - name: Install Xvfb and set DISPLAY variable
         run: |
           sudo apt-get install -y xvfb  # Install Xvfb package
-          export DISPLAY=:99  # Set the DISPLAY environment variable to use virtual display 99
+          export DISPLAY=:99  # Set the DISPLAY environment variable to virtual display 99
           Xvfb :99 -screen 0 1024x768x24 &  # Start Xvfb with screen 0 and resolution 1024x768, 24-bit color depth
+          echo "DISPLAY=:99" >> $GITHUB_ENV  # Export DISPLAY globally to the environment variable
 
-      # Step 5: Run the Maven build and tests
+      # Step 5: Run Maven Build and Tests
       - name: Run Maven Build and Tests
         run: mvn clean test  # Run the Maven command to build the project and execute the tests
