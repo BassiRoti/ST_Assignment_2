@@ -24,8 +24,5 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y maven
 
-    - name: Build with Maven
-      run: mvn clean install -Djava.awt.headless=true  # Adding headless mode here
-
-    - name: Run tests
-      run: mvn test -Djava.awt.headless=true  # Ensuring tests run in headless mode
+    - name: Run Maven Build and Tests
+        run: mvn clean test
