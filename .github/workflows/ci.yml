@@ -21,7 +21,7 @@ jobs:
     - name: Compile Java Code
       run: |
         mkdir -p bin
-        javac -d bin -cp . ./src/*.java ./Tests/*.java
+        javac -d bin -cp . ./src/*.java ./Test/*.java
 
     - name: Run Unit Tests
       run: |
