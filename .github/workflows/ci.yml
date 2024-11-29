@@ -6,7 +6,8 @@ on:
       - main
 
 jobs:
-  test:
+  build:
+    name: Build and Test Project  # Clear job name for better reporting
     runs-on: ubuntu-latest  # Use the latest Ubuntu runner for GitHub Actions
 
     steps:
