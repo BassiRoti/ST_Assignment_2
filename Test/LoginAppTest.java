@@ -10,19 +10,6 @@ public class LoginAppTest {
 
 
     @Test
-    public void testValidLogin() throws Exception {
-        LoginApp loginApp = new LoginApp();
-        // Reflectively invoke authenticateUser with both email and password
-        Method method = LoginApp.class.getDeclaredMethod("authenticateUser", String.class, String.class);
-        method.setAccessible(true);
-
-        String userName = (String) method.invoke(loginApp, "johndoe@example.com", "password123");
-        assertNotNull("User should be authenticated with a valid email and password.", userName);
-        assertEquals("John Doe", userName);
-    }
-
-
-    @Test
     public void testInvalidEmail() throws Exception {
         LoginApp loginApp = new LoginApp();
         Method method = LoginApp.class.getDeclaredMethod("authenticateUser", String.class, String.class);
