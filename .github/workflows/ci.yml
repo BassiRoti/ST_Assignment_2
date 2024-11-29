@@ -19,11 +19,10 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Set up Maven
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'maven'
-        maven-version: '3.8.1'  # You can specify the Maven version if needed
+    - name: Install Maven
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y maven
 
     - name: Build and Run Tests with Maven
       run: |
