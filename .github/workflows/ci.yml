@@ -4,11 +4,16 @@ on:
   pull_request:
     branches:
       - main
-      - master
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Test/
+
+    env:
+      MODE: "dev"
 
     steps:
     - name: Checkout code
@@ -19,16 +24,10 @@ jobs:
       with:
         java-version: '17'  # Adjust based on your project's JDK version
 
-    - name: Cache Maven dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-m2
+    - name: Compile Java Code
+      run: |
+        javac -d bin -cp . ./src/*.java ./Tests/*.java
 
-    - name: Build with Maven
-      run: mvn clean install
-
-    - name: Run tests
-      run: mvn test
+    - name: Run Unit Tests
+      run: |
+        java -cp ./bin org.junit.runner.JUnitCore LoginAppTest
