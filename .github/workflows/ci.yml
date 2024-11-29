@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI without Maven
 
 on:
   pull_request:
@@ -8,12 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./Test/
-
-    env:
-      MODE: "dev"
 
     steps:
     - name: Checkout code
@@ -22,10 +16,11 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '17'  # Adjust based on your project's JDK version
+        java-version: '17'
 
     - name: Compile Java Code
       run: |
+        mkdir -p bin
         javac -d bin -cp . ./src/*.java ./Tests/*.java
 
     - name: Run Unit Tests
