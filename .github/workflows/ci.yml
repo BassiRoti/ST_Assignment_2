@@ -1,4 +1,4 @@
-name: Java CI without Maven
+name: Java CI with Maven
 
 on:
   pull_request:
@@ -19,11 +19,13 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Compile Java Code
-      run: |
-        mkdir -p bin
-        javac -d bin -cp . ./src/*.java ./Test/*.java
+    - name: Set up Maven
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'maven'
+        maven-version: '3.8.1'  # You can specify the Maven version if needed
 
-    - name: Run Unit Tests
+    - name: Build and Run Tests with Maven
       run: |
-        java -cp ./bin org.junit.runner.JUnitCore LoginAppTest
+        mvn clean install
+        mvn test
